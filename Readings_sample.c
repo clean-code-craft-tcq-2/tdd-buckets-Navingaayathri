@@ -23,18 +23,17 @@ return MaxVal;
 
 const char* detectRange(int arr[], int readingscount)
 {
-	int MinValSample, MaxValSample;
+    int MinValSample, MaxValSample;
     MinValSample = getMinVal(arr, readingscount);
-    MaxValSample = getMaxVal(arr, readingscount);	
+    MaxValSample = getMaxVal(arr, readingscount);
+    readingscount = getreadingscount(arr);	
     char RangeofSampleReadings[25];
-	
-	printf("%s", RangeofSampleReadings);
+    printf("%s", RangeofSampleReadings);
     printf("%d-%d, %d", MinValSample, MaxValSample, readingscount);
-   // ;
     return "RangeofSampleReadings";
   }
 
-int getreadingscount(int* arr)
+int getreadingscount(int arr[])
 {
 int readingscount = sizeof(arr)/sizeof(arr[0]);
 return readingscount;
