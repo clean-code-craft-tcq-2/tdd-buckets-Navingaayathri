@@ -1,15 +1,14 @@
 #include "Readings_sample.h"
 
-int checkValidReadings(int *chargingValueArray, int readingsCount)
+bool checkValidReadings(int *chargingValueArray, int readingsCount)
 {
   for (int i = 0; i < readingsCount; i++) 
   {
-   if (chargingValueArray[i]>=0) 
+   if (chargingValueArray[i]>=0) {
    sortReadings(chargingValueArray, readingsCount); 
-   return 1;
-	  
-   else
-   return 0;
+   return True;
+   }
+   return False;
   }
 }
 
@@ -26,7 +25,7 @@ return ( *(int*)val1 - *(int*)val2 );
 
 int checkConsecutiveRange(int *consecutiveChargingValues, int valCount)
 {    
-    if(checkValidReadings(consecutiveChargingValues, valCount) == 1)
+    if(checkValidReadings(consecutiveChargingValues, valCount) == True)
     {
      for(int i = 0; i < valCount; i++)
       {
@@ -36,9 +35,9 @@ int checkConsecutiveRange(int *consecutiveChargingValues, int valCount)
     }
 }
 
-int countConsecutiveRange(int *consecutiveChargingValues, int valCount)
+int countConsecutiveRange(int *consecutiveChargingValues, int valCount, int Cnt)
 {
-     sampleDiffval = checkConsecutiveRange(consecutiveChargingValues, valCount)
+     int sampleDiffval = checkConsecutiveRange(consecutiveChargingValues, valCount)
      if((sampleDiffval == 0) || (sampleDiffval == 1))
      Cnt++;
      return Cnt;    
