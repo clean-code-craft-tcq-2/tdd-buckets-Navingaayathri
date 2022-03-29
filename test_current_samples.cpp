@@ -23,5 +23,4 @@ TEST_CASE("TO test the ranges are consecutive")
   int consecutiveChargingValues[] = {3, 3, 5, 4, 10, 11, 12};
   int valCount = sizeof(consecutiveChargingValues) / sizeof(consecutiveChargingValues[0]);
   REQUIRE(checkValidReadings(consecutiveChargingValues,valCount) == 1);
-
 }
