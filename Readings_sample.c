@@ -6,9 +6,9 @@ bool checkValidReadings(int *chargingValueArray, int readingsCount)
   {
    if (chargingValueArray[i]>=0) {
    sortReadings(chargingValueArray, readingsCount); 
-   return True;
+   return true;
    }
-   return False;
+   return false;
   }
 }
 
@@ -25,19 +25,19 @@ return ( *(int*)val1 - *(int*)val2 );
 
 int checkConsecutiveRange(int *consecutiveChargingValues, int valCount)
 {    
-    if(checkValidReadings(consecutiveChargingValues, valCount) == True)
+    if(checkValidReadings(consecutiveChargingValues, valCount) == true)
     {
      for(int i = 0; i < valCount; i++)
       {
        int sampleDiff = (consecutiveChargingValues[i+1] -  consecutiveChargingValues[i]);
-       return sampleDiff;
-       }
+      }
+      return sampleDiff;
     }
 }
 
 int countConsecutiveRange(int *consecutiveChargingValues, int valCount, int Cnt)
 {
-     int sampleDiffval = checkConsecutiveRange(consecutiveChargingValues, valCount)
+     int sampleDiffval = checkConsecutiveRange(consecutiveChargingValues, valCount);
      if((sampleDiffval == 0) || (sampleDiffval == 1))
      Cnt++;
      return Cnt;    
