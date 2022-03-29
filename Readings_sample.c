@@ -5,11 +5,11 @@ int checkValidReadings(int *chargingValueArray, int readingsCount)
   for (int i = 0; i < readingsCount; i++) 
   {
    if (chargingValueArray[i]>=0) 
-   {
    sortReadings(chargingValueArray, readingsCount); 
    return 1;
-   }
-  return 0;
+	  
+   else
+   return 0;
   }
 }
 
@@ -24,18 +24,24 @@ int cmpfunc (const void * val1, const void * val2)
 return ( *(int*)val1 - *(int*)val2 );
 }
 
-int countConsecutiveRange(int *consecutiveChargingValues, int valCount)
-{
-    int i, sampleDiff, Cnt;
+int checkConsecutiveRange(int *consecutiveChargingValues, int valCount)
+{    
     if(checkValidReadings(consecutiveChargingValues, valCount) == 1)
     {
-	for(i = 0; i < valCount; i++)
-	{
-	sampleDiff = (consecutiveChargingValues[i+1] -  consecutiveChargingValues[i]);
-	Cnt = (sampleDiff == 0) || (sampleDiff == 1) ? Cnt++ : Cnt;	
-        }
-        return Cnt;
+     for(int i = 0; i < valCount; i++)
+      {
+       int sampleDiff = (consecutiveChargingValues[i+1] -  consecutiveChargingValues[i]);
+       return sampleDiff;
+       }
     }
+}
+
+int countConsecutiveRange(int *consecutiveChargingValues, int valCount)
+{
+     sampleDiffval = checkConsecutiveRange(consecutiveChargingValues, valCount)
+     if((sampleDiffval == 0) || (sampleDiffval == 1))
+     Cnt++;
+     return Cnt;    
 }
 
 ChargingValueRange displayRangesandReadings(int MinVal, int MaxVal, int samplesCount)
