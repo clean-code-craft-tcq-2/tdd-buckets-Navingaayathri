@@ -8,7 +8,7 @@ bool checkValidReadings(int *chargingValueArray, int readingsCount)
    sortReadings(chargingValueArray, readingsCount); 
    return true;
    }
-   return false;
+   else return false;
   }
 }
 
@@ -23,13 +23,13 @@ int cmpfunc (const void * val1, const void * val2)
 return ( *(int*)val1 - *(int*)val2 );
 }
 
-int checkConsecutiveRange(int *consecutiveChargingValues, int valCount)
+int checkConsecutiveRange(int *consecutiveChargingValues, int valCount, int sampleDiff)
 {    
     if(checkValidReadings(consecutiveChargingValues, valCount) == true)
     {
      for(int i = 0; i < valCount; i++)
       {
-       int sampleDiff = (consecutiveChargingValues[i+1] -  consecutiveChargingValues[i]);
+       sampleDiff = (consecutiveChargingValues[i+1] -  consecutiveChargingValues[i]);
       }
       return sampleDiff;
     }
