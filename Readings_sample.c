@@ -1,40 +1,53 @@
-#include <stdio.h>
 #include "Readings_sample.h"
 
-int arr[] = {5,4,3,1,6,9,10,12,18,0,3,2,15};
-
-int getMinVal(int arr[], int readingscount)
+int checkValidReadings(int *chargingValueArray, int readingsCount)
 {
-int MinVal= arr[0];
-for(int i=1; i<readingscount; i++)
-if(arr[i] < MinVal)
-MinVal = arr[i];
-return MinVal;
-}
-
-int getMaxVal(int arr[], int readingscount)
-{
-int MaxVal= arr[0];
-for(int i=1; i<readingscount; i++)
-if(arr[i] > MaxVal)
-MaxVal = arr[i];
-return MaxVal;
-}
-
-const char* detectRange(int arr[], int readingscount)
-{
-    int MinValSample, MaxValSample;
-    MinValSample = getMinVal(arr, readingscount);
-    MaxValSample = getMaxVal(arr, readingscount);
-    readingscount = getreadingscount(arr);	
-    char RangeofSampleReadings[25];
-    printf("%s", RangeofSampleReadings);
-    printf("%d-%d, %d", MinValSample, MaxValSample, readingscount);
-    return "RangeofSampleReadings";
+  for (int i = 0; i < readingsCount; i++) 
+  {
+   if (chargingValueArray[i]>=0) 
+   {
+   sortReadings(chargingValueArray, readingsCount); 
+   return 1;
+   }
+  return 0;
   }
+}
 
-int getreadingscount(int arr[])
+int* sortReadings(int *chargingValueArray, int readingsCount) 
 {
-int readingscount = sizeof(arr)/sizeof(arr[0]);
-return readingscount;
+qsort(chargingValueArray, readingsCount, sizeof(int), cmpfunc);
+return chargingValueArray;
+}	
+
+int cmpfunc (const void * val1, const void * val2) 
+{
+return ( *(int*)val1 - *(int*)val2 );
+}
+
+int countConsecutiveRange(int *consecutiveChargingValues, int valCount)
+{
+    int i, j, sampleDiff, Cnt;
+    if(checkValidReadings(consecutiveChargingValues, valCount) == 1)
+    {
+	  for(i = 0; i < valCount; i++)
+	  {
+	   sampleDiff = (consecutiveChargingValues[i+1] -  consecutiveChargingValues[i]);
+		if((sampleDiff == 0) || (sampleDiff == 1))
+		{
+			Cnt++;
+		}
+	   }
+	  return Cnt;
+    }
+}
+
+ChargingValueRange displayRangesandReadings(int MinVal, int MaxVal, int samplesCount)
+{
+ChargingValueRange chargingValueRange;
+chargingValueRange.startVal=MinVal;
+chargingValueRange.endVal=MaxVal;
+chargingValueRange.RangeofSamplesCount= samplesCount;
+printf("Range, Readings\n");
+printf(" %d - %d , %d\n", MinVal, MaxVal, samplesCount); 
+return chargingValueRange;
 }
