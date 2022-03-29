@@ -26,18 +26,15 @@ return ( *(int*)val1 - *(int*)val2 );
 
 int countConsecutiveRange(int *consecutiveChargingValues, int valCount)
 {
-    int i, j, sampleDiff, Cnt;
+    int i, sampleDiff, Cnt;
     if(checkValidReadings(consecutiveChargingValues, valCount) == 1)
     {
-	  for(i = 0; i < valCount; i++)
-	  {
-	   sampleDiff = (consecutiveChargingValues[i+1] -  consecutiveChargingValues[i]);
-		if((sampleDiff == 0) || (sampleDiff == 1))
-		{
-			Cnt++;
-		}
-	   }
-	  return Cnt;
+	for(i = 0; i < valCount; i++)
+	{
+	sampleDiff = (consecutiveChargingValues[i+1] -  consecutiveChargingValues[i]);
+	Cnt = (sampleDiff == 0) || (sampleDiff == 1) ? Cnt++ : Cnt;	
+        }
+        return Cnt;
     }
 }
 
