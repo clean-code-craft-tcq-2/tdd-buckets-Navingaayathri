@@ -1,19 +1,20 @@
 #include "Readings_sample.h"
-
-bool checkValidReadings(int *chargingValueArray, int readingsCount)
+int checkValidReadings(int *chargingValueArray, int readingsCount)
 {
+  int* result = (int*) calloc (chargingValueArray, sizeof(readingsCount));
   for (int i = 0; i < readingsCount; i++) 
   {
    if (chargingValueArray[i]>=0) 
    {
    sortReadings(chargingValueArray, readingsCount); 
-   return true;
+   result[i]=  1;
    }
    else 
    {
-    return false;
+    result[i]= 0;
    }
   }
+  return result;
 }
 
 int* sortReadings(int *chargingValueArray, int readingsCount) 
@@ -27,7 +28,7 @@ int cmpfunc (const void * val1, const void * val2)
 return ( *(int*)val1 - *(int*)val2 );
 }
 
-int checkConsecutiveRange(int *consecutiveChargingValues, int valCount, int sampleDiff)
+int checkConsecutiveRange(int *consecutiveChargingValues, int valCount)
 {    
     if(checkValidReadings(consecutiveChargingValues, valCount) == true)
     {
