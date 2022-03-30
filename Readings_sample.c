@@ -1,20 +1,21 @@
 #include "Readings_sample.h"
-int checkValidReadings(int *chargingValueArray, int readingsCount)
+#include <stdbool.h>
+ 
+bool checkValidReadings(int *chargingValueArray, int readingsCount)
 {
-  int* result = (int*) calloc (readingsCount, sizeof(int));
-  for (int i = 0; i < readingsCount; i++) 
+  int i;
+  for (i = 0; i < readingsCount; i++) 
   {
    if (chargingValueArray[i]>=0) 
    {
    sortReadings(chargingValueArray, readingsCount); 
-   result[i]=  1;
+   return true;
    }
    else 
    {
-    result[i]= 0;
+    return false;
    }
   }
-  return *result;
 }
 
 int* sortReadings(int *chargingValueArray, int readingsCount) 
@@ -31,7 +32,7 @@ return ( *(int*)val1 - *(int*)val2 );
 void checkConsecutiveRange(int *consecutiveChargingValues, int valCount)
 {    
   int sampleDiff;
-    if(checkValidReadings(consecutiveChargingValues, valCount) == 1)
+    if(checkValidReadings(consecutiveChargingValues, valCount) == true)
     {
      for(int i = 0; i < valCount; i++)
       {
