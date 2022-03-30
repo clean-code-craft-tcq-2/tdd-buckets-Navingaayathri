@@ -1,7 +1,7 @@
 #include "Readings_sample.h"
 int checkValidReadings(int *chargingValueArray, int readingsCount)
 {
-  int* result = (int*) calloc (chargingValueArray, sizeof(int));
+  int* result = (int*) calloc (readingsCount, sizeof(int));
   for (int i = 0; i < readingsCount; i++) 
   {
    if (chargingValueArray[i]>=0) 
