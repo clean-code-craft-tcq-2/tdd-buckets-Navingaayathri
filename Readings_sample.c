@@ -35,7 +35,7 @@ int checkConsecutiveRange(int *consecutiveChargingValues, int valCount)
      for(int i = 0; i < valCount; i++)
       {
        sampleDiff = (consecutiveChargingValues[i+1] -  consecutiveChargingValues[i]);
-       return sampleDiff;
+       //return sampleDiff;
       }      
     }
 }
