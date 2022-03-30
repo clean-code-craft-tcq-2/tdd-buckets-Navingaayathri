@@ -12,7 +12,7 @@ int endVal;
 int RangeofSamplesCount;
 }ChargingValueRange;
 
-extern int checkValidReadings( int *chargingValueArray, int readingsCount);
+extern bool checkValidReadings( int *chargingValueArray, int readingsCount);
 extern int* sortReadings( int *chargingValueArray,  int readingsCount);
 extern int cmpfunc (const void * val1, const void * val2);
 void checkConsecutiveRange(int *consecutiveChargingValues, int valCount);
