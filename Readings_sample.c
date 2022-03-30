@@ -31,7 +31,7 @@ return ( *(int*)val1 - *(int*)val2 );
 void checkConsecutiveRange(int *consecutiveChargingValues, int valCount)
 {    
   int sampleDiff;
-    if(checkValidReadings(consecutiveChargingValues, valCount) == true)
+    if(checkValidReadings(consecutiveChargingValues, valCount) == 1)
     {
      for(int i = 0; i < valCount; i++)
       {
