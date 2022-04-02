@@ -7,14 +7,19 @@
 
 typedef struct 
 {
-int startVal;
-int endVal;
-int RangeofSamplesCount;
-}ChargingValueRange;
+int startValRange;
+int endValRange;
+int readingsCount;
+}chargingValueRange;
 
-extern bool checkValidReadings( int *chargingValueArray, int readingsCount);
+typedef struct  
+{
+chargingValueRange *dataFormat;
+int RangeofSamplesCount;
+}RangeofSamples;
+
+extren int checkValidReadings(int *chargingValueArray, int readingsCount);
 extern int* sortReadings( int *chargingValueArray,  int readingsCount);
 extern int cmpfunc (const void * val1, const void * val2);
-void checkConsecutiveRange(int *consecutiveChargingValues, int valCount);
-extern int countConsecutiveRange(int *consecutiveChargingValues, int valCount, int Cnt);
-ChargingValueRange displayRangesandReadings(int MinVal,  int MaxVal, int samplesCount);
+RangeofSamples findchargingValueRange(int *chargingValueArray, int readingsCount);
+void displayRangesandReadings(RangeofSamples samplesRange);
