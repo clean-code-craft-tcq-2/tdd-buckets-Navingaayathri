@@ -1,61 +1,56 @@
 #include "Readings_sample.h"
 #include <stdbool.h>
- 
-bool checkValidReadings(int *chargingValueArray, int readingsCount)
-{
-  int i;
-  for (i = 0; i < readingsCount; i++) 
-  {
-   if (chargingValueArray[i]>=0) 
-   {
-   sortReadings(chargingValueArray, readingsCount); 
-   return true;
-   }
-   else 
-   {
-    return false;
-   }
-  }
-}
 
 int* sortReadings(int *chargingValueArray, int readingsCount) 
 {
-qsort(chargingValueArray, readingsCount, sizeof(int), cmpfunc);
-return chargingValueArray;
+    if(checkValidReadings(chargingValueArray, readingsCount)==1)
+    qsort(chargingValueArray, readingsCount, sizeof(int), cmpfunc);
+    return chargingValueArray;
 }	
 
 int cmpfunc (const void * val1, const void * val2) 
 {
-return ( *(int*)val1 - *(int*)val2 );
+   return ( *(int*)val1 - *(int*)val2 );
 }
 
-void checkConsecutiveRange(int *consecutiveChargingValues, int valCount)
-{    
-  int sampleDiff;
-    if(checkValidReadings(consecutiveChargingValues, valCount) == true)
-    {
-     for(int i = 0; i < valCount; i++)
-      {
-       sampleDiff = (consecutiveChargingValues[i+1] -  consecutiveChargingValues[i]);
-      }      
-    }
-}
-
-int countConsecutiveRange(int *consecutiveChargingValues, int valCount, int Cnt)
+RangeofSamples findchargingValueRange(int *chargingValueArray, int readingsCount)
 {
-     int sampleDiffval = checkConsecutiveRange(consecutiveChargingValues, valCount);
-     if((sampleDiffval == 0) || (sampleDiffval == 1))
-     Cnt++;
-     return Cnt;    
+int *sortedChargingValues = sortReadings(chargingValueArray, readingsCount);
+chargingValueRange *dataFormat1 = (chargingValueRange *)malloc(readingsCount * sizeof(chargingValueRange));
+int startVal = sortedChargingValues[0], endVal = sortedChargingValues[0], Idx = 0, Cnt = 0;
+for (int i = 0; i < readingsCount; i++)
+{
+if (sortedChargingValues[i] == startVal || sortedChargingValues[i] == endVal+1)
+  {
+    Cnt++;
+    endVal = sortedChargingValues[i];
+  }
+else
+  {
+    dataFormat1[Idx].startValRange = startVal;
+    dataFormat1[Idx].endValRange =endVal;
+    dataFormat1[Idx].readingsCount = Cnt;
+      Idx++;
+    Cnt = 1;
+    startVal = sortedChargingValues[i];
+    endVal = startVal;
+  }
 }
 
-ChargingValueRange displayRangesandReadings(int MinVal, int MaxVal, int samplesCount)
-{
-ChargingValueRange chargingValueRange;
-chargingValueRange.startVal=MinVal;
-chargingValueRange.endVal=MaxVal;
-chargingValueRange.RangeofSamplesCount= samplesCount;
-printf("Range, Readings\n");
-printf(" %d - %d , %d\n", MinVal, MaxVal, samplesCount); 
-return chargingValueRange;
+    dataFormat1[Idx].startValRange = startVal;
+    dataFormat1[Idx].endValRange =endVal;
+    dataFormat1[Idx].readingsCount = Cnt;
+    RangeofSamples samplesRange = {dataFormat1, Idx+1};
+    return samplesRange;
 }
+
+void displayRangesandReadings(RangeofSamples samplesRange)
+{
+ printf("Range, Readings\n");
+ chargingValueRange *dataFormat = samplesRange.dataFormat;
+for (int i = 0; i < samplesRange.RangeofSamplesCount; i++)
+ {
+ printf("%d-%d, %d\n", dataFormat[i].startValRange, dataFormat[i].endValRange, dataFormat[i].readingsCount);
+ }
+}
+
