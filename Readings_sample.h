@@ -18,7 +18,7 @@ chargingValueRange *dataFormat;
 int RangeofSamplesCount;
 }RangeofSamples;
 
-extren int checkValidReadings(int *chargingValueArray, int readingsCount);
+extern int checkValidReadings(int *chargingValueArray, int readingsCount);
 extern int* sortReadings( int *chargingValueArray,  int readingsCount);
 extern int cmpfunc (const void * val1, const void * val2);
 RangeofSamples findchargingValueRange(int *chargingValueArray, int readingsCount);
