@@ -12,7 +12,7 @@ SCENARIO("To sort the array of current samples")
         int expCurrentSamples[11] = {1, 2, 3, 3, 4, 5, 10, 11, 12, 16, 17};
 
     WHEN ("sortReadings() function is called with current samples array and count"){
-            int(*realPtr) = sortReadings(inpCurrentSamples, 10);
+            int(*realPtr) = sortReadings(inpCurrentSamples, 11);
 	THEN ("Gives the expected sorted array"){
                 for (int i = 0; i < 10; i++)
                 {
