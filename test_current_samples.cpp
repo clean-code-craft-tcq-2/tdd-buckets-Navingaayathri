@@ -8,13 +8,13 @@ SCENARIO("To sort the array of current samples")
 {
     GIVEN ("An Unsorted array of current samples"){
 
-        int inpCurrentSamples[11] = {4, 7, 1, 3, 2, 7, 5, 6, 9, 10, 50};
-        int expCurrentSamples[11] = {1, 2, 3, 4, 5, 6, 7, 7, 9, 10, 50};
+        int inpCurrentSamples[10] = {1, 3, 3, 16, 4, 10, 11, 12, 5, 17};
+        int expCurrentSamples[10] = {1, 3, 3, 4, 5, 10, 11, 12, 16, 17};
 
     WHEN ("sortReadings() function is called with current samples array and count"){
-            int(*realPtr) = sortReadings(inpCurrentSamples, 11);
+            int(*realPtr) = sortReadings(inpCurrentSamples, 10);
 	THEN ("Gives the expected sorted array"){
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 9; i++)
                 {
                     REQUIRE(realPtr[i] == expCurrentSamples[i]);
                 } 
