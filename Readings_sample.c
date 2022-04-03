@@ -26,11 +26,11 @@ if (sortedChargingValues[i] == startVal || sortedChargingValues[i] == endVal+1)
   }
 else
   {
+    Idx++;
+    Cnt = 1;
     dataFormat[Idx].startValRange = startVal;
     dataFormat[Idx].endValRange =endVal;
     dataFormat[Idx].readingsCount = Cnt;
-    Idx++;
-    Cnt = 1;
     startVal = sortedChargingValues[i];
     endVal = startVal;
   }
