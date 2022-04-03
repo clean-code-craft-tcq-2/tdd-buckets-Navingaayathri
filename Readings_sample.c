@@ -3,7 +3,6 @@
 
 int* sortReadings(int *chargingValueArray, int readingsCount) 
 {
-    if(checkValidReadings(chargingValueArray, readingsCount)==1)
     qsort(chargingValueArray, readingsCount, sizeof(int), cmpfunc);
     return chargingValueArray;
 }	
@@ -53,4 +52,3 @@ for (int i = 0; i < samplesRange.RangeofSamplesCount; i++)
  printf("%d-%d, %d\n", dataFormat[i].startValRange, dataFormat[i].endValRange, dataFormat[i].readingsCount);
  }
 }
-
