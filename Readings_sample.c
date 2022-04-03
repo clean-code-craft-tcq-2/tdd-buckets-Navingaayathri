@@ -39,7 +39,7 @@ else
     dataFormat[Idx].startValRange = startVal;
     dataFormat[Idx].endValRange =endVal;
     dataFormat[Idx].readingsCount = Cnt;
-    RangeofSamples samplesRange = {dataFormat1, Idx+1};
+    RangeofSamples samplesRange = {dataFormat, Idx+1};
     return samplesRange;
 }
 
@@ -47,7 +47,7 @@ void displayRangesandReadings(RangeofSamples samplesRange)
 {
  printf("Range, Readings\n");
  chargingValueRange *dataFormat = samplesRange.dataFormat;
-for (int i = 0; i < samplesRange.RangeofSamplesCount; i++)
+ for (int i = 0; i < samplesRange.RangeofSamplesCount; i++)
  {
  printf("%d-%d, %d\n", dataFormat[i].startValRange, dataFormat[i].endValRange, dataFormat[i].readingsCount);
  }
