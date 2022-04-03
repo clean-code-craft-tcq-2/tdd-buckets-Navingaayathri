@@ -39,7 +39,7 @@ else
     dataFormat[Idx].startValRange = startVal;
     dataFormat[Idx].endValRange =endVal;
     dataFormat[Idx].readingsCount = Cnt;
-    RangeofSamples samplesRange = {dataFormat, Idx+1};
+    RangeofSamples samplesRange = {dataFormat, Idx};
     return samplesRange;
 }
 
