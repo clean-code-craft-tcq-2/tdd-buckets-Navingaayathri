@@ -31,7 +31,7 @@ SCENARIO("To find the ranges and occurrences in the sorted array of current samp
         RangeofSamples expRangeofSamplesCount = {expOutput, 3};
 
     WHEN ("findchargingValueRange() is called with Charging values array and readingsCount"){
-        RangeofSamples realRangeofSamples = findchargingValueRange(inpCurrentSamples, 7);
+        RangeofSamples realRangeofSamples = findchargingValueRange(inpCurrentSamples, 10);
             
     THEN ("Ranges and count of samples in the range will be displayed as the output"){
          REQUIRE(realRangeofSamples.RangeofSamplesCount == expRangeofSamplesCount.RangeofSamplesCount);
