@@ -15,7 +15,7 @@ int cmpfunc (const void * val1, const void * val2)
 RangeofSamples findchargingValueRange(int *chargingValueArray, int readingsCount)
 {
 int *sortedChargingValues = sortReadings(chargingValueArray, readingsCount);
-chargingValueRange *dataFormat1 = (chargingValueRange *)malloc(readingsCount * sizeof(chargingValueRange));
+chargingValueRange *dataFormat = (chargingValueRange *)malloc(readingsCount * sizeof(chargingValueRange));
 int startVal = sortedChargingValues[0], endVal = sortedChargingValues[0], Idx = 0, Cnt = 0;
 for (int i = 0; i < readingsCount; i++)
 {
