@@ -14,7 +14,7 @@ SCENARIO("To sort the array of current samples")
     WHEN ("sortReadings() function is called with current samples array and count"){
             int(*realPtr) = sortReadings(inpCurrentSamples, 10);
 	THEN ("Gives the expected sorted array"){
-                for (int i = 0; i < 9; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     REQUIRE(realPtr[i] == expCurrentSamples[i]);
                 } 
@@ -26,7 +26,7 @@ SCENARIO("To sort the array of current samples")
 SCENARIO("To find the ranges and occurrences in the sorted array of current samples")
 {
     GIVEN ("Sorted array of current samples"){
-        int inpCurrentSamples[11] = {1, 2, 3, 3, 16, 4, 10, 11, 12, 5, 17};
+        int inpCurrentSamples[11] = {1, 3, 3, 16, 2, 4, 10, 11, 12, 5, 17};
         chargingValueRange expOutput[3] = {{1, 5, 6}, {10, 12, 3}, {16, 17, 2}};
         RangeofSamples expRangeofSamplesCount = {expOutput, 3};
 
