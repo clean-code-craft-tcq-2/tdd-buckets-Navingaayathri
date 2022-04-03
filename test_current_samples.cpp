@@ -16,7 +16,7 @@ SCENARIO("To sort the array of current samples")
 	THEN ("Gives the expected sorted array"){
                 for (int i = 0; i < 10; i++)
                 {
-                    CHECK(realPtr[i] == expCurrentSamples[i]);
+                    REQUIRE(realPtr[i] == expCurrentSamples[i]);
                 } 
              }
            }
@@ -34,13 +34,13 @@ SCENARIO("To find the ranges and occurrences in the sorted array of current samp
         RangeofSamples realRangeofSamples = findchargingValueRange(inpCurrentSamples, 7);
             
     THEN ("Ranges and count of samples in the range will be displayed as the output"){
-         CHECK(realRangeofSamples.RangeofSamplesCount == expRangeofSamplesCount.RangeofSamplesCount);
+         REQUIRE(realRangeofSamples.RangeofSamplesCount == expRangeofSamplesCount.RangeofSamplesCount);
          int i;
          chargingValueRange *realchargingValueRange = realRangeofSamples.dataFormat;
          for (i = 0; i < realRangeofSamples .RangeofSamplesCount; i++){
-            CHECK(realchargingValueRange[i].startValRange == expOutput[i].startValRange);
-            CHECK(realchargingValueRange[i].endValRange == expOutput[i].endValRange);
-            CHECK(realchargingValueRange[i].readingsCount == expOutput[i].readingsCount);
+            REQUIRE(realchargingValueRange[i].startValRange == expOutput[i].startValRange);
+            REQUIRE(realchargingValueRange[i].endValRange == expOutput[i].endValRange);
+            REQUIRE(realchargingValueRange[i].readingsCount == expOutput[i].readingsCount);
              }
           }
        }
