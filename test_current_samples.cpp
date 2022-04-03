@@ -8,7 +8,7 @@ SCENARIO("To sort the array of current samples")
 {
     GIVEN ("An Unsorted array of current samples"){
 
-		int inpCurrentSamples[11] = {4, 7, 1, 3, 2, 7, 5, 6, 9, 10, 50};
+        int inpCurrentSamples[11] = {4, 7, 1, 3, 2, 7, 5, 6, 9, 10, 50};
         int expCurrentSamples[11] = {1, 2, 3, 4, 5, 6, 7, 7, 9, 10, 50};
 
     WHEN ("sortReadings() function is called with current samples array and count"){
@@ -36,8 +36,8 @@ SCENARIO("To find the ranges and occurrences in the sorted array of current samp
     THEN ("Ranges and count of samples in the range will be displayed as the output"){
          CHECK(realRangeofSamples.RangeofSamplesCount == expRangeofSamplesCount.RangeofSamplesCount);
          int i;
-         chargingValueRange *realchargingValueRange = realRangeofSamplesCount.readingRanges;
-         for (i = 0; i < realRangeofSamplesCount.RangeofSamplesCount; i++){
+         chargingValueRange *realchargingValueRange = realRangeofSamples.dataFormat;
+         for (i = 0; i < realRangeofSamples .RangeofSamplesCount; i++){
             CHECK(realchargingValueRange[i].startValRange == expOutput[i].startValRange);
             CHECK(realchargingValueRange[i].endValRange == expOutput[i].endValRange);
             CHECK(realchargingValueRange[i].readingsCount == expOutput[i].readingsCount);
@@ -50,7 +50,7 @@ SCENARIO("To find the ranges and occurrences in the sorted array of current samp
 TEST_CASE("To test displayRangesandReadings function for printing the output")
 {
     int inpCurrentSamples[10] = {1, 3, 3, 16, 4, 10, 11, 12, 5, 17};
-    chargingValueRange chargingValues[3] = {{1, 5, 5}, {10, 12, 3}, {16, 17, 2}};
-    RangeofSamples samplesRange = {expOutput, 3};
-    REQUIRE(displayRangesandReadings(samplesRange));
+    chargingValueRange dataFormat[3] = {{1, 5, 5}, {10, 12, 3}, {16, 17, 2}};
+    RangeofSamples samplesRange = {chargingValues, 3};
+    REQUIRE_NOTHROW(displayRangesandReadings(samplesRange));
 }
