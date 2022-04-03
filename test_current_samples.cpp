@@ -50,7 +50,7 @@ SCENARIO("To find the ranges and occurrences in the sorted array of current samp
 TEST_CASE("To test displayRangesandReadings function for printing the output")
 {
     int inpCurrentSamples[10] = {1, 3, 3, 16, 4, 10, 11, 12, 5, 17};
-    chargingValueRange dataFormat[3] = {{1, 5, 5}, {10, 12, 3}, {16, 17, 2}};
+    chargingValueRange chargingValues[3] = {{1, 5, 5}, {10, 12, 3}, {16, 17, 2}};
     RangeofSamples samplesRange = {chargingValues, 3};
     REQUIRE_NOTHROW(displayRangesandReadings(samplesRange));
 }
