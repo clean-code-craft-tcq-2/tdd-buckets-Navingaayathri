@@ -26,19 +26,19 @@ if (sortedChargingValues[i] == startVal || sortedChargingValues[i] == endVal+1)
   }
 else
   {
-    dataFormat1[Idx].startValRange = startVal;
-    dataFormat1[Idx].endValRange =endVal;
-    dataFormat1[Idx].readingsCount = Cnt;
-      Idx++;
+    dataFormat[Idx].startValRange = startVal;
+    dataFormat[Idx].endValRange =endVal;
+    dataFormat[Idx].readingsCount = Cnt;
+    Idx++;
     Cnt = 1;
     startVal = sortedChargingValues[i];
     endVal = startVal;
   }
 }
 
-    dataFormat1[Idx].startValRange = startVal;
-    dataFormat1[Idx].endValRange =endVal;
-    dataFormat1[Idx].readingsCount = Cnt;
+    dataFormat[Idx].startValRange = startVal;
+    dataFormat[Idx].endValRange =endVal;
+    dataFormat[Idx].readingsCount = Cnt;
     RangeofSamples samplesRange = {dataFormat1, Idx+1};
     return samplesRange;
 }
