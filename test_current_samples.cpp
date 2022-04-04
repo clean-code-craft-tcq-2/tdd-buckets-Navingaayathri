@@ -13,7 +13,7 @@ SCENARIO("To sort the array of current samples")
     WHEN ("sortReadings() function is called with current samples array and count"){
             int(*realPtr) = sortReadings(inpCurrentSamples, 11);
 	THEN ("Gives the expected sorted array"){
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 11; i++)
                 {
                     REQUIRE(realPtr[i] == expCurrentSamples[i]);
                 } 
