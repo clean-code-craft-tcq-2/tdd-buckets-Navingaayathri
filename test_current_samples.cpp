@@ -28,7 +28,7 @@ SCENARIO("To find the ranges and occurrences in the sorted array of current samp
     GIVEN ("Sorted array of current samples"){
         int inpCurrentSamples[9]={15, 3, 16, 2, 4, 10, 5, 12, 11};
         chargingValueRange chargingValues[3] = {{2, 5, 4}, {10, 12, 3}, {15, 16, 2}};
-        RangeofSamples expRangeofSamplesCount = {expOutput, 3};
+        RangeofSamples expRangeofSamplesCount = {chargingValues, 3};
 
     WHEN ("findchargingValueRange() is called with Charging values array and readingsCount"){
         RangeofSamples realRangeofSamples = findchargingValueRange(inpCurrentSamples, 11);
