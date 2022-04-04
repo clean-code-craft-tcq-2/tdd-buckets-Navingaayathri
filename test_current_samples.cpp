@@ -26,8 +26,8 @@ SCENARIO("To sort the array of current samples")
 SCENARIO("To find the ranges and occurrences in the sorted array of current samples")
 {
     GIVEN ("Sorted array of current samples"){
-        int inpCurrentSamples[11] = {15, 3, 3, 16, 2, 4, 10, 11, 12, 5, 17};
-        chargingValueRange expOutput[3] = {{2, 5, 5}, {10, 12, 3}, {15, 17, 3}};
+        int inpCurrentSamples[9]={15, 3, 16, 2, 4, 10, 5, 12, 11};
+        chargingValueRange chargingValues[3] = {{2, 5, 4}, {10, 12, 3}, {15, 16, 2}};
         RangeofSamples expRangeofSamplesCount = {expOutput, 3};
 
     WHEN ("findchargingValueRange() is called with Charging values array and readingsCount"){
@@ -49,8 +49,8 @@ SCENARIO("To find the ranges and occurrences in the sorted array of current samp
  
 TEST_CASE("To test displayRangesandReadings function for printing the output")
 {
-    int inpCurrentSamples[11] = {15, 3, 3, 16, 2, 4, 10, 11, 12, 5, 17};
-    chargingValueRange chargingValues[3] = {{2, 5, 5}, {10, 12, 3}, {15, 17, 3}};
+    int inpCurrentSamples[9]={15, 3, 16, 2, 4, 10, 5, 12, 11};
+    chargingValueRange chargingValues[3] = {{2, 5, 4}, {10, 12, 3}, {15, 16, 2}};
     RangeofSamples samplesRange = {chargingValues, 3};
     REQUIRE_NOTHROW(displayRangesandReadings(samplesRange));
 }
