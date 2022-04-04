@@ -3,7 +3,6 @@
 #include "test-framework/catch.hpp"
 #include "Readings_sample.h"
 
-
 SCENARIO("To sort the array of current samples")
 {
     GIVEN ("An Unsorted array of current samples"){
@@ -27,17 +26,17 @@ SCENARIO("To find the ranges and occurrences in the sorted array of current samp
 {
     GIVEN ("Sorted array of current samples"){
         int inpCurrentSamples[9]={15, 3, 16, 2, 4, 10, 5, 12, 11};
-        chargingValueRange chargingValues[3] = {{2, 5, 4}, {10, 12, 3}, {15, 16, 2}};
-        RangeofSamples expRangeofSamplesCount = {chargingValues, 3};
+        chargingValueRange expOutput[3] = {{2, 5, 4}, {10, 12, 3}, {15, 16, 2}};
+        RangeofSamples expRangeofSamplesCount = {expOutput, 3};
 
     WHEN ("findchargingValueRange() is called with Charging values array and readingsCount"){
-        RangeofSamples realRangeofSamples = findchargingValueRange(inpCurrentSamples, 11);
+        RangeofSamples realRangeofSamples = findchargingValueRange(inpCurrentSamples, 9);
             
     THEN ("Ranges and count of samples in the range will be displayed as the output"){
          REQUIRE(realRangeofSamples.RangeofSamplesCount == expRangeofSamplesCount.RangeofSamplesCount);
          int i;
          chargingValueRange *realchargingValueRange = realRangeofSamples.dataFormat;
-         for (i = 0; i < realRangeofSamples .RangeofSamplesCount; i++){
+         for (i = 0; i < expRangeofSamplesCount .RangeofSamplesCount; i++){
             REQUIRE(realchargingValueRange[i].startValRange == expOutput[i].startValRange);
             REQUIRE(realchargingValueRange[i].endValRange == expOutput[i].endValRange);
             REQUIRE(realchargingValueRange[i].readingsCount == expOutput[i].readingsCount);
