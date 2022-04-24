@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "A2DConversion.h"
 
 /* Function to find the maximum internal raw value for the given resolution(factor) of ADC */
 int findInternalMaxSens(int ADCFactor)
