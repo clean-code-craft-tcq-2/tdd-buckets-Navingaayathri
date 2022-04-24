@@ -1,17 +1,20 @@
 #include "Readings_sample.h"
 #include <stdbool.h>
 
+/* Sort function for the given array of samples */
 int* sortReadings(int *chargingValueArray, int readingsCount) 
 {
     qsort(chargingValueArray, readingsCount, sizeof(int), cmpfunc);
     return chargingValueArray;
 }	
 
+/* Compare function for qsort */
 int cmpfunc (const void * val1, const void * val2) 
 {
    return ( *(int*)val1 - *(int*)val2 );
 }
 
+/* Function to find charging value samples range and occurences */
 RangeofSamples findchargingValueRange(int *chargingValueArray, int readingsCount)
 {
 int *sortedChargingValues = sortReadings(chargingValueArray, readingsCount);
@@ -43,6 +46,7 @@ else
     return samplesRange;
 }
 
+/* Display the samples range and occurences count in csv format on console */
 void displayRangesandReadings(RangeofSamples samplesRange)
 {
  printf("Range, Readings\n");
