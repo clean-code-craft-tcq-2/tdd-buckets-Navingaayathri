@@ -2,6 +2,7 @@
 
 #include "test-framework/catch.hpp"
 #include "Readings_sample.h"
+#include "A2DConversion.h"
 
 /********************************************* TDD part 1 ***************************************************/
 
