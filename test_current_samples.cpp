@@ -3,6 +3,8 @@
 #include "test-framework/catch.hpp"
 #include "Readings_sample.h"
 
+/********************************************* TDD part 1 ***************************************************/
+
 SCENARIO("To sort the array of current samples")
 {
     GIVEN ("An Unsorted array of current samples"){
