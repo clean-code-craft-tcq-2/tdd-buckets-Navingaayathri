@@ -64,7 +64,7 @@ GIVEN("Internal raw values from ADC sensor min:0, max:2^12-->4094") {
     int expOutput[7] = {0,1,3,6,8,9,10};
 
 WHEN("Internal value to Physical Value conversion function conversion InternalToPhysical() is called with input array, Resolution and Physical range") {
-    int realOutput = convertADCinpToPhyValSens2(ADCInpArr, 12, 7, 0, 10);
+    int* realOutput = convertADCinpToPhyValSens2(ADCInpArr, 12, 7, 0, 10);
 THEN("The Physical value array is returned for the given internal array input ") {
     for(int i=0;i<7;i++)
     {
@@ -81,7 +81,7 @@ GIVEN("Internal raw values from ADC sensor min:0, max:2^10-->1022") {
     int expOutput[7] = {15,8,1,7,11,14,15};
 
 WHEN("Internal value to Physical Value conversion function conversion InternalToPhysical() is called with input array, Resolution and Physical range") {
-    int realOutput = convertADCinpToPhyValSens2(ADCInpArr, 10, 7, -15, 15);
+    int* realOutput = convertADCinpToPhyValSens2(ADCInpArr, 10, 7, -15, 15);
 	
 THEN("The Physical value array is returned for the given internal array input ") {
     for(int i=0;i<7;i++)
