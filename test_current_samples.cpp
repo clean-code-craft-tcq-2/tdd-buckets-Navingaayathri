@@ -62,10 +62,13 @@ SCENARIO("Test the conversion of 12 bit ADC values to real current values(0-10A)
 GIVEN("Internal raw values from ADC sensor min:0, max:2^12-->4094") {
     int ADCInpArr[7] = {0, 560, 1250, 2500, 3250, 3800, 4094};
     int expOutput[7] = {0,1,3,6,8,9,10};
-    int numberOfSamples = sizeof(ADCInpArr)/sizeof(ADCInpArr[0]);
-
-
-
+    int ADCInpSize = sizeof(ADCInpArr)/sizeof(ADCInpArr[0]);
+    int ADCFactor =12, currValMax = 10, currValPhy[ADCInpSize];
+    int expcurrValMax = 10, expADCInpSize = 7, expADCFactor = 12;
+convertADCinpToPhyValSens2(ADCInput, ADCFactor, ADCInpSize, currValPhy, currValMax);
+REQUIRE(expcurrValMax =currValMax);
+REQUIRE(expADCFactor = ADCFactor);
+REQUIRE(expADCInpSize = ADCInpSize);
 
 int ADCValues[] = {4095};
 	int numberOfSamples = sizeof(ADCValues) / sizeof(ADCValues[0]);
