@@ -28,18 +28,19 @@ void convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, in
 }
 
 /* Input raw values from ADC to physical value conversion */
-void convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax)
+int* convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax)
 {
  for (int i = 0; i<ADCInpSize; i++)
   {
-   if (ADCInput[i] <= (findInternalMaxSens(ADCFactor)))
+   if(ADCInput[i] <= (findInternalMaxSens(ADCFactor)))
    {
     convertADCinpToPhyValSens(ADCInput, ADCFactor, ADCInpSize, currValPhy, currValMax);
-    printf("%d\n", currValPhy[i]);
+    return(currValPhy[i]);
     }
     else
     {
     printf("Error : Invalid value!\n");
+    return 0;
    }
  }      
 }
