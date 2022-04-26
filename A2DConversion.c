@@ -21,7 +21,7 @@ int* convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, in
  for (int i = 0; i<ADCInpSize; i++)
  {	
   float convertedVal[i] = executeConversion(ADCInput[i], ADCFactor, currValMax);
-  currValPhy[i] = round(convert);
+  currValPhy[i] = round(convertedVal[i]);
   if (currValPhy[i] < 0)
   currValPhy[i] = (int)abs(currValPhy[i]);
  }
