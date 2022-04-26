@@ -16,7 +16,7 @@ float executeConversion(int ADCInput, int ADCFactor, int currValMax)
   return currValPhy;
 }
 
-void convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax)
+int* convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax)
 {
  for (int i = 0; i<ADCInpSize; i++)
  {	
@@ -35,7 +35,7 @@ int* convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, i
    if(ADCInput[i] <= (findInternalMaxSens(ADCFactor)))
    {
     convertADCinpToPhyValSens(ADCInput, ADCFactor, ADCInpSize, currValPhy, currValMax);
-    return(currValPhy[i]);
+    return(currValPhy);
     }
     else
     {
