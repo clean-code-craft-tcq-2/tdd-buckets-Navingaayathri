@@ -65,35 +65,22 @@ GIVEN("Internal raw values from ADC sensor min:0, max:2^12-->4094") {
     int ADCInpSize = sizeof(ADCInpArr)/sizeof(ADCInpArr[0]);
     int ADCFactor =12, currValMax = 10, currValPhy[ADCInpSize];
     int expcurrValMax = 10, expADCInpSize = 7, expADCFactor = 12;
-convertADCinpToPhyValSens2(ADCInput, ADCFactor, ADCInpSize, currValPhy, currValMax);
-REQUIRE(expcurrValMax =currValMax);
-REQUIRE(expADCFactor = ADCFactor);
-REQUIRE(expADCInpSize = ADCInpSize);
-
-int ADCValues[] = {4095};
-	int numberOfSamples = sizeof(ADCValues) / sizeof(ADCValues[0]);
-	int ADC_Resolution = 12;
-	int maxCurrentValue = 10;
-	int currentSenseValues[numberOfSamples];
-	int expectedADC_Resolution = 12, expectedmaxCurrentValue = 10 , expectednumberOfSamples = 1;
-	
-	ChargingCurrentSenseValue(ADCValues, numberOfSamples, ADC_Resolution, maxCurrentValue, currentSenseValues);
-	REQUIRE(ADC_Resolution == expectedADC_Resolution);
-  	REQUIRE(maxCurrentValue == expectedmaxCurrentValue);
-  	REQUIRE(numberOfSamples == expectednumberOfSamples);
-
 
 WHEN("Internal value to Physical Value conversion function conversion InternalToPhysical() is called with input array, Resolution and Physical range") {
-    int* realOutput = convertADCinpToPhyValSens2(ADCInpArr, 12, 7, 0, 10);
+    int* realOutput = convertADCinpToPhyValSens2(ADCInput, ADCFactor, ADCInpSize, currValPhy, currValMax);
 THEN("The Physical value array is returned for the given internal array input ") {
     for(int i=0;i<7;i++)
     {
-     REQUIRE(expOutput[i] == realOutput[i]);
+REQUIRE(expcurrValMax =currValMax);
+REQUIRE(expADCFactor = ADCFactor);
+REQUIRE(expADCInpSize = ADCInpSize);
+REQUIRE(expOutput[i] == realOutput[i]);
     }
    }
   }
  }
 }
+/*
 SCENARIO("Test the conversion of 10 bit ADC values to real current values(-15A to +15A)")
 {
 GIVEN("Internal raw values from ADC sensor min:0, max:2^10-->1022") {
@@ -112,3 +99,4 @@ THEN("The Physical value array is returned for the given internal array input ")
   }
  }
 }
+*/
