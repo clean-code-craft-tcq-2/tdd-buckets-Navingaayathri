@@ -12,7 +12,7 @@ int findInternalMaxSens(int ADCFactor)
 /* Conversion function to calculate physical value of current samples with maximum raw value of given resolution(factor) */
 float executeConversion(int ADCInput, int ADCFactor, int currValMax)
 {
-  float currValPhy = ((currValMax* ADCInput) /(findInternalMaxSens(ADCFactor)));
+  float currValPhy = ((currValMax * ADCInput) /(findInternalMaxSens(ADCFactor)));
   return currValPhy;
 }
 
@@ -21,9 +21,9 @@ void convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, in
  for (int i = 0; i<ADCInpSize; i++)
  {	
   float convert = executeConversion(ADCInput[i], ADCFactor, currValMax);
-	currValPhy[i] = round(convert);
-	if (currValPhy[i] < 0)
-	currValPhy[i] = abs(currValPhy[i]);
+  currValPhy[i] = round(convert);
+  if (currValPhy[i] < 0)
+  currValPhy[i] = abs(currValPhy[i]);
  }
 }
 
@@ -32,14 +32,14 @@ void convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, i
 {
  for (int i = 0; i<ADCInpSize; i++)
   {
-	if (ADCInput[i] <= (findInternalMaxSens(ADCFactor)))
-	{
-   convertADCinpToPhyValSens(ADCInput, ADCFactor, ADCInpSize, currValPhy,  currValMax);
-   printf("%d\n", currValPhy[i]);
-	}
-	else
-	{
-   printf("Error : Invalid value!\n");
-	}
+   if (ADCInput[i] <= (findInternalMaxSens(ADCFactor)))
+   {
+    convertADCinpToPhyValSens(ADCInput, ADCFactor, ADCInpSize, currValPhy, currValMax);
+    printf("%d\n", currValPhy[i]);
+    }
+    else
+    {
+    printf("Error : Invalid value!\n");
+   }
  }      
 }
