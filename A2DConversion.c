@@ -25,15 +25,16 @@ int* convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, in
   if (currValPhy[i] < 0)
   currValPhy[i] = abs(currValPhy[i]);
  }
+  return currValPhy;
 }
 
 /* Input raw values from ADC to physical value conversion */
-int* convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax)
+void convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax)
 {
 int invalidVal =  (pow (2, ADCFactor) - 1);
  for (int i = 0; i<ADCInpSize; i++)
   {
-   if(ADCInput[ <= (findInternalMaxSens(ADCFactor))&& (ADCInput[i]!= InvalidVal))
+   if(ADCInput[i] <= (findInternalMaxSens(ADCFactor)) && (ADCInput[i]!= InvalidVal))
    {
     convertADCinpToPhyValSens(ADCInput, ADCFactor, ADCInpSize, currValPhy, currValMax);
     }
