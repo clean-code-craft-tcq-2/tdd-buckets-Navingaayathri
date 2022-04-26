@@ -16,7 +16,7 @@ float executeConversion(int ADCInput, int ADCFactor, int currValMax)
   return currValPhy;
 }
 
-void convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, int currValPhy, int currValMax)
+void convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax)
 {
  for (int i = 0; i<ADCInpSize; i++)
  {	
@@ -28,7 +28,7 @@ void convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, in
 }
 
 /* Input raw values from ADC to physical value conversion */
-void convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, int currValPhy, int currValMax)
+void convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax)
 {
  for (int i = 0; i<ADCInpSize; i++)
   {
