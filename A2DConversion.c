@@ -34,7 +34,7 @@ void convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, i
 int invalidVal =  (pow (2, ADCFactor) - 1);
  for (int i = 0; i<ADCInpSize; i++)
   {
-   if(ADCInput[i] <= (findInternalMaxSens(ADCFactor)) && (ADCInput[i]!= InvalidVal))
+   if(ADCInput[i] <= (findInternalMaxSens(ADCFactor)) && (ADCInput[i]!= invalidVal))
    {
     convertADCinpToPhyValSens(ADCInput, ADCFactor, ADCInpSize, currValPhy, currValMax);
     }
