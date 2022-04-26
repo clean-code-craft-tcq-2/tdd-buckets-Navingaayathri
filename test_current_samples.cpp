@@ -13,7 +13,7 @@ GIVEN ("An Unsorted array of current samples") {
   int expCurrentSamples[11] = {2, 3, 3, 4, 5, 10, 11, 12, 15, 16, 17};
 
 WHEN ("sortReadings() function is called with current samples array and count") {
-  int(*realPtr) = sortReadings(inpCurrentSamples, 11);
+  int (*realPtr) = sortReadings(inpCurrentSamples, 11);
 THEN ("Gives the expected sorted array") {
     for (int i = 0; i < 11; i++)
     {
@@ -62,6 +62,23 @@ SCENARIO("Test the conversion of 12 bit ADC values to real current values(0-10A)
 GIVEN("Internal raw values from ADC sensor min:0, max:2^12-->4094") {
     int ADCInpArr[7] = {0, 560, 1250, 2500, 3250, 3800, 4094};
     int expOutput[7] = {0,1,3,6,8,9,10};
+    int numberOfSamples = sizeof(ADCInpArr)/sizeof(ADCInpArr[0]);
+
+
+
+
+int ADCValues[] = {4095};
+	int numberOfSamples = sizeof(ADCValues) / sizeof(ADCValues[0]);
+	int ADC_Resolution = 12;
+	int maxCurrentValue = 10;
+	int currentSenseValues[numberOfSamples];
+	int expectedADC_Resolution = 12, expectedmaxCurrentValue = 10 , expectednumberOfSamples = 1;
+	
+	ChargingCurrentSenseValue(ADCValues, numberOfSamples, ADC_Resolution, maxCurrentValue, currentSenseValues);
+	REQUIRE(ADC_Resolution == expectedADC_Resolution);
+  	REQUIRE(maxCurrentValue == expectedmaxCurrentValue);
+  	REQUIRE(numberOfSamples == expectednumberOfSamples);
+
 
 WHEN("Internal value to Physical Value conversion function conversion InternalToPhysical() is called with input array, Resolution and Physical range") {
     int* realOutput = convertADCinpToPhyValSens2(ADCInpArr, 12, 7, 0, 10);
