@@ -73,7 +73,7 @@ THEN("The Physical value array is returned for the given internal array input ")
 //REQUIRE(expcurrValMax ==currValMax);
 //REQUIRE(expADCFactor == ADCFactor);
 //REQUIRE(expADCInpSize == ADCInpSize);
-REQUIRE(expOutput[i] == realOutput[i]);
+REQUIRE(realOutput[i] == expOutput[i]);
     }
    }
   }
