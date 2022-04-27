@@ -29,19 +29,20 @@ int* convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, in
 }
 
 /* Input raw values from ADC to physical value conversion */
-int convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax)
+int* convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax)
 {
 int invalidVal =  (pow (2, ADCFactor) - 1);
  for (int i = 0; i<ADCInpSize; i++)
   {
    if(ADCInput[i] <= (findInternalMaxSens(ADCFactor)) && (ADCInput[i]!= invalidVal))
    {
-    convertADCinpToPhyValSens(ADCInput, ADCFactor, ADCInpSize, currValPhy, currValMax);
+     //malloc fr newArr
+     currValPhy = convertADCinpToPhyValSens(ADCInput, ADCFactor, ADCInpSize, currValPhy, currValMax);
     }
     else
     {
     printf("Error : Invalid value!\n");
    }
  }     
-  return 0;
+  return currValPhy;
 }
