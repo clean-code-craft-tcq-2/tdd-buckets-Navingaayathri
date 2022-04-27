@@ -20,8 +20,8 @@ int* convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, in
 {
  for (int i = 0; i<ADCInpSize; i++)
  {	
-  float convertedVal[i] = executeConversion(ADCInput[i], ADCFactor, currValMax);
-  currValPhy[i] = round(convertedVal[i]);
+  float currValPhy[i] = executeConversion(ADCInput[i], ADCFactor, currValMax);
+  currValPhy[i] = round(currValPhy[i]);
   if (currValPhy[i] < 0)
   currValPhy[i] = (int)abs(currValPhy[i]);
  }
@@ -36,7 +36,6 @@ int invalidVal =  (pow (2, ADCFactor) - 1);
   {
    if(ADCInput[i] <= (findInternalMaxSens(ADCFactor)) && (ADCInput[i]!= invalidVal))
    {
-     //malloc fr newArr
      currValPhy = convertADCinpToPhyValSens(ADCInput, ADCFactor, ADCInpSize, currValPhy, currValMax);
     }
     else
