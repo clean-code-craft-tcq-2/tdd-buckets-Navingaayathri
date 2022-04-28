@@ -60,8 +60,8 @@ TEST_CASE("To test displayRangesandReadings function for printing the output")
 
 SCENARIO("Test the conversion of 12 bit ADC values to real current values(0-10A)") {
 GIVEN("Internal raw values from ADC sensor min:0, max:2^12-->4094") {
-    int ADCInpArr[8] = {0, 560, 1250, 2500, 3250, 3800, 4094};
-    int expOutput[8] = {0,1,3,6,8,9,10};
+    int ADCInpArr[6] = {0, 560, 1250, 2500, 3250, 3800};
+    int expOutput[6] = {0,1,3,6,8,9};
     int ADCInpSize = sizeof(ADCInpArr)/sizeof(ADCInpArr[0]);
     int ADCFactor =12, currValMax = 10, currValPhy[ADCInpSize-1];
 
