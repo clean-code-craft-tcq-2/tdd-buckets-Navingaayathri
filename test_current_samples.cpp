@@ -70,32 +70,9 @@ WHEN("Internal value to Physical Value conversion function conversion InternalTo
 THEN("The Physical value array is returned for the given internal array input ") {
    for(int i=0;i<ADCInpSize;i++)
     {
-//REQUIRE(expcurrValMax ==currValMax);
-//REQUIRE(expADCFactor == ADCFactor);
-//REQUIRE(expADCInpSize == ADCInpSize);
-REQUIRE(realOutput[i] == expOutput[i]);
+     REQUIRE(realOutput[i] == expOutput[i]);
     }
    }
   }
  }
 }
-/*
-SCENARIO("Test the conversion of 10 bit ADC values to real current values(-15A to +15A)")
-{
-GIVEN("Internal raw values from ADC sensor min:0, max:2^10-->1022") {
-    int ADCInpArr[7] = {0, 250, 540, 750, 900, 1000, 1022};
-    int expOutput[7] = {15,8,1,7,11,14,15};
-
-WHEN("Internal value to Physical Value conversion function conversion InternalToPhysical() is called with input array, Resolution and Physical range") {
-    int* realOutput = convertADCinpToPhyValSens2(ADCInpArr, 10, 7, -15, 15);
-	
-THEN("The Physical value array is returned for the given internal array input ") {
-    for(int i=0;i<7;i++)
-    {
-     REQUIRE(expOutput[i] == realOutput[i]);
-    }
-   }
-  }
- }
-}
-*/
