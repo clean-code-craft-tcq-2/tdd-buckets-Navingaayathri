@@ -77,7 +77,7 @@ THEN("The Physical value array is returned for the given internal array input ")
     }
   }
 }
-
+/*
 SCENARIO("Test the conversion of 10 bit ADC values to real current values(-15A to 15A)") {
 GIVEN("Internal raw values from ADC sensor min:0, max:2^10-->1022") {
   int ADCInput[] = {300,550,1022};
@@ -96,4 +96,17 @@ THEN("The Physical value array is returned for the given internal array input ")
       }
     }
   }
+}*/
+TEST_CASE("Test the conversion of 10 bit ADC values to real current values(-15A to 15A)")
+{
+ int ADCInput[] = {64, 1000, 1146, 1220, 1560, 2048, 4094};
+	int ADCInpSize = sizeof(ADCInput) / sizeof(ADCInput[0]);
+	int expConvertedValues[] = {0, 2, 2, 2, 3, 5, 10};
+	int phyCurrVal[ADCInpSize];
+	int ADC_Factor = 12, currentValMax = 10;
+	phyValConversion(ADCInput, ADCInpSize, ADC_Factor, currentValMax, phyCurrVal);
+	for(int i = 0; i < ADCInpSize; ++i)
+	{
+	REQUIRE(phyCurrVal[i] == expConvertedValues[i]);
+	}
 }
