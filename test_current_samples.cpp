@@ -4,6 +4,9 @@
 #include "Readings_sample.h"
 #include "A2DConversion.h"
 
+#define ADC_FACTOR 12
+#define CURRENTVALMAX 10
+
 /********************************************* TDD part 1 ***************************************************/
 
 SCENARIO("To sort the array of current samples") {
