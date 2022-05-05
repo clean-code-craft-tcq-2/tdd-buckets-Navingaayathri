@@ -80,7 +80,7 @@ THEN("The Physical value array is returned for the given internal array input ")
 
 TEST_CASE("Test the conversion of 10 bit ADC values to real current values(-15A to 15A)")
 {
-        int ADCInput[] = {15,125,300,550,830,1022};
+        int ADCInput[] = {15,150,300,550,830,1022};
 	int ADCInpSize = sizeof(ADCInput) / sizeof(ADCInput[0]);
 	int expConvertedValues[] = {0,2,4,8,12,15};
 	int phyCurrVal[ADCInpSize];
