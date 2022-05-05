@@ -16,7 +16,7 @@ int* convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, in
  for (int i = 0; i<ADCInpSize; i++)
  {	
   adcInpVal = ADCInput[i] / findInternalMaxSens(ADCFactor);
-  convertedVal = ((currValMax * convertedVal) /(findInternalMaxSens(ADCFactor)));
+  convertedVal = ((currValMax * adcInpVal) /(findInternalMaxSens(ADCFactor)));
   currValPhy[i] = round(convertedVal);
   if (currValPhy[i] < 0)
   currValPhy[i] = (int)abs(currValPhy[i]);
