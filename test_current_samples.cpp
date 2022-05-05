@@ -61,9 +61,9 @@ TEST_CASE("To test displayRangesandReadings function for printing the output")
 SCENARIO("Test the conversion of 12 bit ADC values to real current values(0-10A)") {
 GIVEN("Internal raw values from ADC sensor min:0, max:2^12-->4094") {
     int ADCInpArr[2] = {560, 1250};
-    int expOutput[2] = {1,3};
+   // int expOutput[2] = {1,3};
     //int ADCInpSize = sizeof(ADCInpArr)/sizeof(ADCInpArr[0]);
-    int ADCFactor =12, currValMax = 10, currValPhy[ADCInpSize];
+    int ADCFactor =12, currValMax = 10, currValPhy[2];
 
 WHEN("Internal value to Physical Value conversion function conversion InternalToPhysical() is called with input array, Resolution and Physical range") {
  convertADCinpToPhyValSens2(ADCInpArr, 12, 2, currValPhy, currValMax);
