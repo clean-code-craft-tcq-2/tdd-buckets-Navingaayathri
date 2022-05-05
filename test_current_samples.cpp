@@ -78,7 +78,7 @@ THEN("The Physical value array is returned for the given internal array input ")
   }
 }
 
-TEST_CASE("Test the conversion of 10 bit ADC values to real current values(-15A to 15A)--> "Internal raw values from ADC sensor min:0, max:1022")
+TEST_CASE("Test the conversion of 10 bit ADC values to real current values(-15A to 15A)--> Internal raw values from ADC sensor min:0, max:1022")
 {
         int ADCInput[] = {15,150,300,550,830,1022,-150};
 	int ADCInpSize = sizeof(ADCInput) / sizeof(ADCInput[0]);
