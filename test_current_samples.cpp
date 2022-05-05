@@ -4,9 +4,6 @@
 #include "Readings_sample.h"
 #include "A2DConversion.h"
 
-#define ADC_FACTOR 12
-#define CURRENTVALMAX 10
-
 /********************************************* TDD part 1 ***************************************************/
 
 SCENARIO("To sort the array of current samples") {
@@ -67,15 +64,16 @@ GIVEN("Internal raw values from ADC sensor min:0, max:2^12-->4094") {
 	int ADCInpSize = sizeof(ADCInput) / sizeof(ADCInput[0]);
 	int expConvertedValues[] = {0, 2};
 	int phyCurrVal[ADCInpSize];
+	int ADC_Factor = 12, currentValMax = 10;
 
 WHEN("Internal value to Physical Value conversion function conversion InternalToPhysical() is called with input array, Resolution and Physical range") {
- phyValConversion(ADCInput, ADCInpSize, ADC_FACTOR, CURRENTVALMAX, phyCurrVal);
+ phyValConversion(ADCInput, ADCInpSize, ADC_FACTOR, currentValMax, phyCurrVal);
 THEN("The Physical value array is returned for the given internal array input ") {
 	for(int i = 0; i < ADCInpSize; ++i)
 	{
 		REQUIRE(phyCurrVal[i] == expConvertedValues[i]);
 	}
- }
-}
-}
+      }
+    }
+  }
 }
