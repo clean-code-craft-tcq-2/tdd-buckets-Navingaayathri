@@ -1,9 +1,9 @@
 #include "A2DConversion.h"
 
 /* Function to find the maximum internal raw value for the given resolution(factor) of ADC */
-int findInternalMaxSens(int ADC_FACTOR, int value)
+int findInternalMaxSens(int ADC_Factor, int value)
 {
-	return (pow(2,ADC_FACTOR) - value);
+	return (pow(2,ADC_Factor) - value);
 }
 
 /* Conversion function to calculate physical value of current samples with maximum raw value of given resolution(factor) */
@@ -13,7 +13,7 @@ void convertADCinpToPhyValSens(int ADCInput[], int ADCInpSize, int ADC_Factor, i
 	int   adcSensVal;	
 	for (int i = 0; i < ADCInpSize ; ++i)
 	{
-		adcSensVal = (CURRENTVALMAX * ADCInput[i]);
+		adcSensVal = (currentValMax * ADCInput[i]);
 		currentValue    = (adcSensVal/(findInternalMaxSens(ADC_Factor,2)));
 		convertedVal[i] = round(currentValue);
 		if(convertedVal[i] < 0)
@@ -28,7 +28,7 @@ void phyValConversion(int ADCInput[], int ADCInpSize, int ADC_Factor, int curren
 {
 	for (int i = 0; i< ADCInpSize; ++i)
 	{
-		if(ADCInput[i] < (findInternalMaxSens(ADC_FACTOR,1)))
+		if(ADCInput[i] < (findInternalMaxSens(ADC_Factor,1)))
 		{
 		convertADCinpToPhyValSens(ADCInput, ADCInpSize, ADC_Factor, currentValMax, phyCurrVal);
 		}
