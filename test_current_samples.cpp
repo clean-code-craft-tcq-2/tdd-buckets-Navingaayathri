@@ -59,10 +59,10 @@ TEST_CASE("To test displayRangesandReadings function for printing the output")
 /********************************************* TDD extension(part 2) ***************************************************/
 
 SCENARIO("Test the conversion of 12 bit ADC values to real current values(0-10A)") {
-GIVEN("Internal raw values from ADC sensor min:0, max:2^12-->4094") {
-  int ADCInput[] = {64, 1000, 1146, 1220, 1560, 2048, 4094};
+GIVEN("Internal raw values from ADC sensor min:0, max:4094") {
+  int ADCInput[] = {64, 1000, 1146, 1220, 1560, 2048, 4094,-400};
 	int ADCInpSize = sizeof(ADCInput) / sizeof(ADCInput[0]);
-	int expConvertedValues[] = {0, 2, 2, 2, 3, 5, 10};
+	int expConvertedValues[] = {0, 2, 2, 2, 3, 5, 10, 1};
 	int phyCurrVal[ADCInpSize];
 	int ADC_Factor = 12, currentValMax = 10;
 
@@ -78,7 +78,7 @@ THEN("The Physical value array is returned for the given internal array input ")
   }
 }
 
-TEST_CASE("Test the conversion of 10 bit ADC values to real current values(-15A to 15A)")
+TEST_CASE("Test the conversion of 10 bit ADC values to real current values(-15A to 15A)--> "Internal raw values from ADC sensor min:0, max:1022")
 {
         int ADCInput[] = {15,150,300,550,830,1022,-150};
 	int ADCInpSize = sizeof(ADCInput) / sizeof(ADCInput[0]);
