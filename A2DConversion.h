@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-int findInternalMaxSens(int ADCFactor);
-float executeConversion(int ADCInput, int ADCFactor, int currValMax);
-int* convertADCinpToPhyValSens(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax);
-int* convertADCinpToPhyValSens2(int ADCInput[], int ADCFactor, int ADCInpSize, int* currValPhy, int currValMax);
+void displayError(void);
+int findInternalMaxSens(int ADC_FACTOR, int value);
+void convertADCinpToPhyValSens(int ADCInput[], int ADCInpSize, int ADC_FACTOR, int CURRENTVALMAX, int* convertedVal);
+void phyValConversion(int ADCInput[], int ADCInpSize, int ADC_FACTOR, int CURRENTVALMAX, int* phyCurrVal);
