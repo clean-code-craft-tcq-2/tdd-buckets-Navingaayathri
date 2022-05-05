@@ -68,8 +68,8 @@ GIVEN("Internal raw values from ADC sensor min:0, max:2^12-->4094") {
 WHEN("Internal value to Physical Value conversion function conversion InternalToPhysical() is called with input array, Resolution and Physical range") {
  convertADCinpToPhyValSens2(ADCInpArr, 12, 2, currValPhy, currValMax);
 THEN("The Physical value array is returned for the given internal array input ") {
-  REQUIRE(ADCInpArr[0] == 1);
-  REQUIRE(ADCInpArr[1] == 3);
+  REQUIRE(currValPhy[0] == 1);
+  REQUIRE(currValPhy[1] == 3);
           
    /*for(int i=0;i<ADCInpSize;i++)
     {
