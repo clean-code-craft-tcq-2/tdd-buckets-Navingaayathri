@@ -39,5 +39,6 @@ int invalidVal =  (pow (2, ADCFactor) - 1);
     printf("Error : Invalid value!\n");
     }
   }  
+  printf("%d\n %d", currValPhy[0],currValPhy[1]);
   return currValPhy;
 }
